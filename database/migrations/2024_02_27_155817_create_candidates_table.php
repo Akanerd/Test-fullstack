@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('job_id');
-            // $table->foreignId('job_id')->constrained('jobs')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            // $table->unsignedBigInteger('job_id');
+            $table->foreignId('job_id')->constrained('jobs')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->string('name');
             $table->string('email');
             $table->string('phone');

@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Job;
 use App\Models\Skill;
-use App\Models\Skillset;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CandidateController extends Controller
 {
+    protected $candidates;
+
+    public function __construct()
+    {
+        $this->candidates = new Candidate();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -42,7 +47,7 @@ class CandidateController extends Controller
                 'email'    => 'required|email',
                 'phone'    => 'required|numeric|digits_between:10,12',
                 'year'     => 'required|numeric',
-                'skill'    => 'required|array|min:1', 
+                'skill'    => 'required|array|min:1',
             ],
             [
                 'name.required'    => 'Kolom Nama Harus Diisi',
@@ -55,12 +60,14 @@ class CandidateController extends Controller
         );
 
         $candidate = Candidate::create([
-            'name' => $request->name,
+            'name'   => $request->name,
             'job_id' => $request->job_id,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'year' => $request->year,
+            'email'  => $request->email,
+            'phone'  => $request->phone,
+            'year'   => $request->year,
+            'created_by' => $this->candidates->id,
         ]);
+
 
         if ($candidate) {
             // Penyimpanan berhasil, lanjutkan dengan skillset jika ada.

@@ -106,9 +106,10 @@ For more information on the importance of a professional README for your reposit
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
+> Add a demo to your deployed project.
 
-- [Live Demo Link](https://google.com)
+- [screen-capture (1).webm](https://github.com/Akanerd/Energeek/assets/85096618/9dd8cd01-61c6-4437-9229-e48fb3207636)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

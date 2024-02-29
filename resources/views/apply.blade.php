@@ -68,7 +68,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div id="result"></div>
                     </div>
                 </div>
             </div>

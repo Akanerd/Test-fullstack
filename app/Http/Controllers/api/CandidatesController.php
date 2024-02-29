@@ -52,8 +52,8 @@ class CandidatesController extends Controller
             [
                 'name'     => 'required',
                 'job_id'   => 'required',
-                'email'    => 'required|email',
-                'phone'    => 'required|numeric|digits_between:10,12',
+                'email'    => 'required|email|unique:candidates,email',
+                'phone'    => 'required|numeric|digits_between:10,12|unique:candidates,phone',
                 'year'     => 'required|numeric',
                 'skill'    => 'required|array|min:1',
             ],

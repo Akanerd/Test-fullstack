@@ -28,9 +28,10 @@ After you're finished please remove all the comments and instructions!
 For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
 -->
 
+
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
+![9e50c153aaa22215466d39eafea04955](https://github.com/Akanerd/Energeek/assets/85096618/55d327fc-ca90-407b-b1e4-cbb859723479)
   <br/>
 
   <h3><b>Microverse README Template</b></h3>

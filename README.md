@@ -92,7 +92,7 @@ For more information on the importance of a professional README for your reposit
 > Describe between 1-3 key features of the application.
 
 - **[Desain Database yang sesuai ERD]**
-- <img src="ERD.png" alt="logo" width="100" height="auto" />
+  <img src="\dokumentasi\ERD.png" alt="logo" height="auto" />
 - **[Dokumentasi API POSTMAN]**
 - **[Laravel Migration dan Seeder Skill dan Jabatan]**
 - **[Saving data menggunakan Ajax]**

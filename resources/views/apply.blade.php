@@ -169,8 +169,8 @@
                             
                             Swal.fire({
                                 icon: 'error',
-                                title: 'GAGAL!',
-                                text: 'Terjadi kesalahan: ' +
+                                title: 'Terjadi Kesalahan!',
+                                text: 'Email yang anda masukkan sudah pernah melamar dijabatan tersebut, silahkan memilih jabatan yang lain.' +
                                 xhr.responseText, // Include error message in the alert
                                 showConfirmButton: true
                             });

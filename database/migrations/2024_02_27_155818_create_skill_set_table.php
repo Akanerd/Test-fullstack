@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('skillsets', function (Blueprint $table) {
+        Schema::create('skill_set', function (Blueprint $table) {
             $table->unsignedBigInteger('candidate_id');
             $table->unsignedBigInteger('skillset_id');
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade');
-            $table->foreign('skillset_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->foreign('skillset_id')->references('id')->on('skills')->onDelete('cascade');;
         });
     }
 
@@ -24,6 +24,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('skillsets');
+        Schema::table('skill_set', function (Blueprint $table) {
+            $table->dropForeign('skill_set_candidate_id_foreign');
+            $table->dropForeign('skill_set_skillset_id_foreign');
+        });
+        Schema::dropIfExists('skill_set');
     }
 };

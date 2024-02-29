@@ -28,7 +28,7 @@ class Skillset extends Model
      */
     public function candidates()
     {
-        return $this->belongsToMany(Candidate::class, 'skillsets');
+        return $this->belongsToMany(Candidate::class, 'skill_set');
     }
 
     /**
@@ -38,6 +38,6 @@ class Skillset extends Model
      */
     public function skills()
     {
-        return $this->belongsToMany(Skill::class);
+        return $this->belongsToMany(Skill::class, 'skill_sets');
     }
 }

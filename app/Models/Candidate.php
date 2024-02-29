@@ -30,7 +30,7 @@ class Candidate extends Model
      */
     public function skillsets()
     {
-        return $this->belongsToMany(Skillset::class, 'skillsets');
+        return $this->belongsToMany(Skillset::class, 'skill_set');
     }
     /**
      * Get the job that owns the Candidate
@@ -41,4 +41,10 @@ class Candidate extends Model
     {
         return $this->belongsTo(Job::class);
     }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, "skill_set", "candidate_id",  "skillset_id");
+    }
+    
 }

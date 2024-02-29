@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResources([
+    'candidate' => App\Http\Controllers\API\CandidatesController::class,
+    'skill' => App\Http\Controllers\API\SkillController::class,
+    'job' => App\Http\Controllers\API\JobController::class,
+]);

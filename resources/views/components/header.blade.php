@@ -1,5 +1,3 @@
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,4 +12,5 @@
     {{-- link datepicker --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
         rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>

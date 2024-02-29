@@ -20,6 +20,6 @@ class Skill extends Model
      */
     public function skillsets()
     {
-        return $this->belongsToMany(skillset::class);
+        return $this->belongsToMany(skillset::class,'skill_set');
     }
 }

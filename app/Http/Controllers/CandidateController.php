@@ -6,6 +6,7 @@ use App\Models\Candidate;
 use App\Models\Job;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CandidateController extends Controller
@@ -39,8 +40,8 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(
-            $request,
+        $validator = Validator::make(
+            $request->all(),
             [
                 'name'     => 'required',
                 'job_id'   => 'required',
@@ -50,14 +51,19 @@ class CandidateController extends Controller
                 'skill'    => 'required|array|min:1',
             ],
             [
-                'name.required'    => 'Kolom Nama Harus Diisi',
-                'job_id.required'  => 'Kolom Nama Harus Diisi',
-                'email.required'   => 'Kolom Email Harus Diisi',
-                'phone.required'   => 'Kolom Telepon Harus Diisi',
-                'year.required'    => 'Kolom Tahun Harus Diisi',
-                'skill.required'    => 'Kolom Skill Harus Diisi',
+                'name.required'    => 'Entry Nama Harus Diisi',
+                'job_id.required'  => 'Entry Jabatan Harus Diisi',
+                'email.required'   => 'Entry Email Harus Diisi',
+                'phone.required'   => 'Entry Telepon Harus Diisi',
+                'year.required'    => 'Entry Tahun Harus Diisi',
+                'skill.required'   => 'Entry Skill Harus Diisi',
             ]
         );
+
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
         $candidate = Candidate::create([
             'name'   => $request->name,

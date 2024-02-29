@@ -94,6 +94,7 @@ For more information on the importance of a professional README for your reposit
 - **[Desain Database yang sesuai ERD]**
   <img src="\dokumentasi\ERD.png" alt="logo" height="auto" />
 - **[Dokumentasi API POSTMAN]**
+  <a href="[#](https://documenter.getpostman.com/view/33273758/2sA2rGvKEc)">Dokumentasi API</a>
 - **[Laravel Migration dan Seeder Skill dan Jabatan]**
 - **[Saving data menggunakan Ajax]**
 - **[Frontend dengan Bootstrap 5, select2, niceform]**

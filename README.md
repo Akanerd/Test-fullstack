@@ -47,11 +47,8 @@ For more information on the importance of a professional README for your reposit
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Setup](#setup)
   - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
   - [Deployment](#deployment)
 - [👥 Authors](#authors)
 
@@ -104,12 +101,11 @@ For more information on the importance of a professional README for your reposit
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Demo Test <a name="live-demo"></a>
 
 > Add a demo to your deployed project.
 
-- [screen-capture (1).webm](https://github.com/Akanerd/Energeek/assets/85096618/9dd8cd01-61c6-4437-9229-e48fb3207636)
-
+[screen-capture.webm](https://github.com/Akanerd/Energeek/assets/85096618/5f88e7e1-9153-4a29-9cab-67d1639da744)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -117,7 +113,7 @@ For more information on the importance of a professional README for your reposit
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
+> Describe how a to could make use of your project.
 
 To get a local copy up and running, follow these steps.
 

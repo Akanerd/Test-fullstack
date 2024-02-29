@@ -22,78 +22,44 @@
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
                                     <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                                    <input type="text" class="required form-control @error('name') is-invalid @enderror"
-                                        name="name" id="name" placeholder="Masukkan Nama"
-                                        data-required-message="Entry nama tidak boleh kosong">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input type="text" class="required form-control" name="name" id="name"
+                                        placeholder="Masukkan Nama" data-required-message="Entry nama tidak boleh kosong">
                                 </div>
                                 <div class="col-12">
                                     <label class="col-sm-3 col-form-label">Jabatan <span
                                             class="text-danger">*</span></label>
-                                    <select class="required form-control jabatan @error('job_id') is-invalid @enderror"
-                                        name="job_id" id="job" data-required-message="Entry job tidak boleh kosong">
+                                    <select class="required form-control jabatan" name="job_id" id="job"
+                                        data-required-message="Entry job tidak boleh kosong">
                                         @foreach ($job as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('job_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Telepon <span class="text-danger">*</span></label>
-                                    <input type="text" class="required form-control @error('phone') is-invalid @enderror"
-                                        name="phone" id="phone" placeholder="Masukkan Nomor"
-                                        data-required-message="Entry telepon tidak boleh kosong">
-                                    @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input type="text" class="number form-control " name="phone" id="phone"
+                                        placeholder="Masukkan Nomor"
+                                        data-number-message="Entry telepon harus bersifat numeric dengan 12 digit">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="required form-control @error('email') is-invalid @enderror"
-                                        name="email" id="email" placeholder="Masukkan Email"
-                                        data-required-message="Entry email tidak boleh kosong">
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input type="text" class="email form-control" name="email" id="email"
+                                        placeholder="Masukkan Email"
+                                        data-email-message="Email tidak sesuai, sertakan @ pada alamat email">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Tahun Lahir <span class="text-danger">*</span></label>
-                                    <input type="text"
-                                        class="required form-control datepicker @error('year') is-invalid @enderror"
-                                        id="year" name="year"
-                                        data-required-message="Entry tahun lahir tidak boleh kosong" />
-                                    @error('year')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input type="text" class="required form-control datepicker" id="year"
+                                        name="year" data-required-message="Entry tahun lahir tidak boleh kosong" />
                                 </div>
                                 <div class="col-12">
                                     <label class="col-sm-3 col-form-label">Skill <span class="text-danger">*</span></label>
-                                    <select class="required skill form-control @error('skill') is-invalid @enderror"
-                                        id="skill" data-required-message="Pilih minimal 1 skill" multiple
-                                        name="skill[]">
+                                    <select class="required skill form-control" id="skill"
+                                        data-required-message="Pilih minimal 1 skill" multiple name="skill[]">
                                         @foreach ($skill as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('skill')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
@@ -102,6 +68,7 @@
                                 </div>
                             </div>
                         </form>
+                        <div id="result"></div>
                     </div>
                 </div>
             </div>
@@ -127,12 +94,14 @@
             $(".datepicker").datepicker({
                 format: "yyyy",
                 viewMode: "years",
-                minViewMode: "years"
+                minViewMode: "years",
+            });
+            $('#store').niceform({
+
+                postFormEnabled: false,
             });
 
-            $('#store').niceform();
             $('#store').validate({
-                postFormEnabled: true,
                 rules: {
                     // Aturan validasi untuk setiap input
                     'name': {
@@ -158,10 +127,12 @@
                     }
                 },
                 submitHandler: function(form, event) {
-                    // event.preventDefault(); // Menggunakan event.preventDefault() di sini
+                    event.preventDefault();
 
+                    // Ambil data formulir
                     var formData = new FormData(form);
 
+                    // Lakukan pengiriman AJAX
                     $.ajax({
                         url: $(form).attr('action'),
                         type: 'POST',
@@ -170,6 +141,8 @@
                         contentType: false,
 
                         success: function(response) {
+                            console.log(response); // Log the response to the console
+                            $('#result').text(JSON.stringify(response)); // Optionally display response in a DOM element
                             if (response.status == "success") {
                                 Swal.fire({
                                     icon: 'success',
@@ -180,8 +153,30 @@
                                 }).then(function() {
                                     location.reload();
                                 });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'GAGAL!',
+                                    text: 'Lamran gagal dikirim! ' + JSON.stringify(response), // Include response data in the error message
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                }).then(function() {
+                                    location.reload();
+                                });
                             }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'GAGAL!',
+                                text: 'Terjadi kesalahan: ' +
+                                xhr.responseText, // Include error message in the alert
+                                showConfirmButton: true
+                            });
                         }
+
                     });
                 }
             });

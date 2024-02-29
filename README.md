@@ -31,7 +31,8 @@ For more information on the importance of a professional README for your reposit
 
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-![9e50c153aaa22215466d39eafea04955](https://github.com/Akanerd/Energeek/assets/85096618/55d327fc-ca90-407b-b1e4-cbb859723479)
+![9e50c153aaa22215466d39eafea04955](https://github.com/Akanerd/Energeek/assets/85096618/b6b95d13-08ee-4c51-8fbf-9643e2e661f2)
+
   <br/>
 
   <h3><b>Microverse README Template</b></h3>

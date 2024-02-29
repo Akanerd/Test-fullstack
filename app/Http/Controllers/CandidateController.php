@@ -80,11 +80,14 @@ class CandidateController extends Controller
             if ($request->has('skill')) {
                 $candidate->skillsets()->attach($request->skill);
             }
-            Alert::success('Berhasil!', 'Lamaran berhasil dikirim');
-            return redirect()->back();
+            // Alert::success('Berhasil!', 'Lamaran berhasil dikirim');
+            // return redirect()->back();
+            return response()->json([
+                'status' => 'success'
+            ]);
         } else {
-            Alert::error('Gagal!', 'Lamaran gagal dikirim');
-            return redirect()->back();
+            // Alert::error('Gagal!', 'Lamaran gagal dikirim');
+            // return redirect()->back();
         }
     }
 
